@@ -1,3 +1,5 @@
+const { Separator } = require('@inquirer/prompts');
+
 async function getBranches(data) {
 	let splitData = data.split(' ');
 	let result = [];
@@ -5,6 +7,8 @@ async function getBranches(data) {
 	result.push({
 		value: '-b'
 	});
+
+  result.push(new Separator());
 
 	for (const element of splitData) {
 		const b = element.replace(/\n/g, '').replace('*', '');

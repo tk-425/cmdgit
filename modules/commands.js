@@ -3,6 +3,7 @@ const { getBranches } = require('./getBranches');
 const { showBranches } = require('./showBranches');
 const { CommandType } = require('../utils/types');
 const { displayInput } = require('../utils/displayInput');
+const { userConfirm } = require('./userConfirm');
 
 async function command(cmd) {
 	exec(cmd, (err, stdout, stderr) => {
@@ -17,6 +18,10 @@ async function command(cmd) {
 		}
 
 		switch (cmd) {
+			case CommandType.gitInit:
+				userConfirm(CommandType.gitInit);
+				break;
+
 			case CommandType.newBranch:
 				getBranches(stdout).then(result => {
 					showBranches(result);
@@ -24,7 +29,7 @@ async function command(cmd) {
 				break;
 
 			case CommandType.showCurrent:
-        displayInput('Current branch:', stdout);
+				displayInput('Current branch:', stdout);
 				break;
 
 			default:
