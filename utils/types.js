@@ -1,6 +1,11 @@
 const CommandType = {
+	gitInit: 'git init',
+	gitAdd: 'git add ',
+	gitAddAll: 'git add .',
 	showCurrent: 'git branch --show-current',
-	newBranch: 'git branch -a'
+	newBranch: 'git branch -a',
+	exit: '',
+	menu: ''
 };
 
 const NameType = {
